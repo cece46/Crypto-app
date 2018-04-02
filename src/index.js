@@ -40,7 +40,8 @@ notifyBtn.addEventListener('click',function(event){
         height:200,
         frame:false,
         transparent:true,
-        alwaysOnTop:true
+        alwaysOnTop:true,
+        focusable:true
     })
     win.on('close',function(){win=null})
     win.loadURL(modalPath)

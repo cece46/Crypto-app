@@ -35,6 +35,9 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
+    
+    //Quit app
+    app.quit();
   })
 
   var menu = mmenu.buildFromTemplate([
@@ -52,6 +55,7 @@ function createWindow () {
         {type:'separator' },
         {
           label: 'Quitter',
+          accelerator: process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
           click(){
             app.quit()
           }
@@ -60,7 +64,17 @@ function createWindow () {
       ]
     },
     {
-      label:'Info',
+      label:'Developer Tools',
+      submenu:[
+        {
+          label: 'dev tools',
+          accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
+          click(item,focusedWindow){
+            focusedWindow.toggleDevTools();
+          }
+        },
+        {role:'reload'}
+      ]
     }
   ])
 
